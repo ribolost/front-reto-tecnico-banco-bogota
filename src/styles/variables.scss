@@ -1,12 +1,58 @@
-// Banco de Bogotá Brand Colors
-$bdb-blue-primary: #003153; // Azul oscuro institucional
-$bdb-blue-light: #00548b; // Azul secundario
-$bdb-yellow: #f7e900; // Amarillo acento
+// --- 1. Brand Palette ---
+$bdb-blue-primary: #003153;
+$bdb-blue-light: #00548b;
+$bdb-blue-soft: #e3f2fd;
+$bdb-yellow: #f7e900;
+$bdb-yellow-dark: #c7bc00;
 $bdb-white: #ffffff;
-$bdb-gray-light: #f4f6f8; // Fondo general
-$bdb-text-dark: #2c3e50;
 
-// Spacing & Border Radius
-$border-radius-md: 8px;
+// --- 2. Neutral Scale ---
+$bdb-gray-bg: #f4f6f8;
+$bdb-gray-border: #d1d5db;
+$bdb-text-dark: #2c3e50;
+$bdb-text-muted: #6b7280;
+$bdb-text-light: #ffffff;
+
+// --- 3. Semantic States ---
+// Success
+$bdb-success: #10b981;
+$bdb-success-bg: #ecfdf5;
+$bdb-success-dark: #065f46;
+// Error
+$bdb-error: #ef4444;
+$bdb-error-bg: #fef2f2;
+$bdb-error-dark: #7f1d1d;
+// Warning
+$bdb-warning: #e65100;
+$bdb-warning-bg: #fff3e0;
+
+// --- 4. Layout & Spacing ---
+$container-max-width: 1200px;
+$container-narrow: 800px;
 $sidebar-width: 260px;
+$header-height: 64px;
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// --- 5. Component Dimensions ---
+$input-height: 48px;
+$btn-height: 48px;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-pill: 50px;
+
+// --- 6. Effects ---
 $transition-speed: 0.3s;
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+// --- 7. Breakpoints (Mobile First) ---
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1440px;

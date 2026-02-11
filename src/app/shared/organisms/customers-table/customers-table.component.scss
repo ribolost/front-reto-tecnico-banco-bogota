@@ -1,0 +1,130 @@
+@use 'sass:color';
+@use 'styles/variables' as var;
+
+.bog-table-wrapper {
+  width: 100%;
+  margin-top: var.$spacing-md;
+
+  @media (min-width: var.$breakpoint-tablet) {
+    background: var.$bdb-white;
+    border-radius: var.$border-radius-lg;
+    box-shadow: var.$shadow-card;
+    overflow: hidden;
+  }
+}
+
+.bog-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+
+  @media (min-width: var.$breakpoint-tablet) {
+    display: table;
+  }
+
+  &__head {
+    display: none;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      display: table-header-group;
+      background-color: var.$bdb-gray-bg;
+    }
+  }
+
+  &__th {
+    padding: var.$spacing-md var.$spacing-sm;
+    text-align: left;
+    color: var.$bdb-blue-primary;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid color.adjust(var.$bdb-gray-bg, $lightness: -6%);
+  }
+
+  &__body {
+    display: block;
+    width: 100%;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      display: table-row-group;
+    }
+  }
+
+  &__row {
+    display: block;
+    background: var.$bdb-white;
+    margin-bottom: var.$spacing-lg;
+    padding: var.$spacing-md;
+    border-radius: 16px;
+    border: 1px solid color.adjust(var.$bdb-gray-bg, $lightness: -2%);
+    box-shadow: var.$shadow-sm;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      display: table-row;
+      margin-bottom: 0;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid var.$bdb-gray-bg;
+
+      &:hover {
+        background-color: rgba(var.$bdb-blue-primary, 0.02);
+      }
+    }
+  }
+
+  &__cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid color.adjust(var.$bdb-gray-bg, $lightness: 2%);
+
+    &::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: var.$bdb-blue-light;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding-right: var.$spacing-md;
+      min-width: 40%;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @media (min-width: var.$breakpoint-tablet) {
+      display: table-cell;
+      padding: 1.25rem var.$spacing-sm;
+      border-bottom: none;
+      vertical-align: middle;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &--highlight {
+      .bog-table__value {
+        font-weight: 700;
+        color: var.$bdb-blue-primary;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  &__value {
+    flex: 1;
+    text-align: right;
+    font-size: 1rem;
+    color: var.$bdb-text-dark;
+    word-break: break-word;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      text-align: left;
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<section class="bog-customers-page">
+  <header class="bog-customers-page__header">
+    <div class="bog-customers-page__title-group">
+      <h1 class="bog-customers-page__title">Administración de Clientes</h1>
+      <p class="bog-customers-page__subtitle">
+        Visualiza la información de los clientes registrados.
+      </p>
+    </div>
+    <bog-button variant="accent" class="bog-btn-add" (clicked)="createCustomer()">
+      <span class="icon-plus">+</span> Nuevo Cliente
+    </bog-button>
+  </header>
+
+  <main class="bog-customers-page__content">
+    <bog-customers-table [customers]="customers()"> </bog-customers-table>
+  </main>
+</section>

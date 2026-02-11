@@ -1,0 +1,21 @@
+@use 'styles/variables' as var;
+
+.bog-badge {
+  padding: 6px 14px;
+  border-radius: var.$border-radius-pill;
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  &--cc {
+    background: var.$bdb-blue-soft;
+    color: var.$bdb-blue-primary;
+  }
+  &--ce {
+    background: var.$bdb-warning-bg;
+    color: var.$bdb-warning;
+  }
+  &--pas {
+    background: var.$bdb-success-bg;
+    color: var.$bdb-success-dark;
+  }
+}

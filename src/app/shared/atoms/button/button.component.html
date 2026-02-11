@@ -1,0 +1,18 @@
+<button
+  [type]="type()"
+  class="bog-button"
+  [class]="'bog-button--' + variant()"
+  [class.bog-button--block]="block()"
+  [class.bog-button--loading]="isLoading()"
+  [disabled]="disabled() || isLoading()"
+  (click)="onClick($event)"
+>
+  @if (isLoading()) {
+    <span class="bog-button__spinner"></span>
+  }
+
+  <span class="bog-button__content" [class.bog-button__content--hidden]="isLoading()">
+    <ng-content></ng-content>
+    {{ label() }}
+  </span>
+</button>

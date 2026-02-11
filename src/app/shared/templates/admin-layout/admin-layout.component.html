@@ -1,0 +1,78 @@
+<div class="admin-layout">
+  @if (isMobileMenuOpen()) {
+    <div class="admin-layout__backdrop" (click)="closeMobileSidebar()"></div>
+  }
+
+  <aside class="sidebar" [class.sidebar--open]="isMobileMenuOpen()">
+    <div class="sidebar__header">
+      <button class="sidebar__close-btn" (click)="closeMobileSidebar()" aria-label="Cerrar menú">
+        ✕
+      </button>
+
+      <img src="logo.png" alt="Banco de Bogotá" class="sidebar__logo" width="150" />
+    </div>
+
+    <nav class="sidebar__nav">
+      <ul class="sidebar__list">
+        @for (item of menuItems(); track item.id) {
+          <li class="sidebar__item" [class.sidebar__item--active]="item.isOpen">
+            <button
+              class="sidebar__link"
+              (click)="toggleMenu(item.id)"
+              [attr.aria-expanded]="item.isOpen"
+            >
+              <div class="sidebar__link-content">
+                <i class="icon icon-{{ item.icon }}"></i>
+                <span class="sidebar__label">{{ item.label }}</span>
+              </div>
+              <span class="sidebar__chevron">▼</span>
+            </button>
+
+            @if (item.subItems && item.isOpen) {
+              <ul class="sidebar__sub-list">
+                @for (subItem of item.subItems; track subItem.route) {
+                  <li class="sidebar__sub-item">
+                    <a
+                      [routerLink]="subItem.route"
+                      routerLinkActive="sidebar__sub-link--active"
+                      class="sidebar__sub-link"
+                    >
+                      {{ subItem.label }}
+                    </a>
+                  </li>
+                }
+              </ul>
+            }
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <p class="sidebar__version">v1.0.0 Internal</p>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-bar">
+      <div class="top-bar__left">
+        <button class="top-bar__hamburger" (click)="toggleMobileSidebar()">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <h1 class="top-bar__title">Onboarding</h1>
+      </div>
+
+      <div class="top-bar__user">
+        <span class="top-bar__avatar">A</span>
+        <span class="top-bar__role">Admin</span>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <ng-content></ng-content>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,33 @@
+@use 'styles/variables' as var;
+
+.bog-customers-page {
+  padding: var.$spacing-lg;
+  max-width: var.$container-max-width;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var.$spacing-lg;
+
+    @media (max-width: var.$breakpoint-tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var.$spacing-md;
+    }
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    color: var.$bdb-blue-primary;
+    margin-bottom: var.$spacing-xs;
+    font-weight: 800;
+  }
+
+  &__subtitle {
+    color: var.$bdb-text-dark;
+    opacity: 0.7;
+    font-size: 0.95rem;
+  }
+}

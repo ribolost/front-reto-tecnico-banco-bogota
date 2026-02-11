@@ -1,0 +1,106 @@
+<section class="account">
+  <header class="account__header">
+    <h1 class="account__title">Gestión de Cuentas</h1>
+    <p class="account__subtitle">Consulte o asocie productos a sus clientes.</p>
+  </header>
+
+  <div class="account__content">
+    <article class="bog-card search-card">
+      <label class="bog-label">Buscar Cliente</label>
+
+      <div class="custom-select" [class.custom-select--open]="isDropdownOpen()">
+        <div class="custom-select__trigger" (click)="toggleDropdown()">
+          <span class="custom-select__value" [class.placeholder]="!selectedCustomer()">
+            {{ selectedCustomer() ? formattedSelectedCustomer() : 'Seleccione un cliente...' }}
+          </span>
+          <i class="custom-select__icon">▼</i>
+        </div>
+
+        @if (isDropdownOpen()) {
+          <div class="custom-select__dropdown">
+            <div class="custom-select__search-box">
+              <input
+                type="text"
+                placeholder="Filtrar por nombre o documento..."
+                [ngModel]="searchQuery()"
+                (ngModelChange)="searchQuery.set($event)"
+                class="bog-input"
+                autofocus
+                (click)="$event.stopPropagation()"
+              />
+            </div>
+
+            <ul class="custom-select__options">
+              @for (customer of filteredCustomers(); track customer.id) {
+                <li class="custom-select__option" (click)="selectCustomer(customer)">
+                  <span class="u-bold"
+                    >{{ customer.documentType }} {{ customer.documentNumber }}</span
+                  >
+                  <span class="u-light">{{ customer.fullName }}</span>
+                </li>
+              } @empty {
+                <li class="custom-select__empty">No se encontraron clientes.</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+      @if (isDropdownOpen()) {
+        <div class="backdrop" (click)="isDropdownOpen.set(false)"></div>
+      }
+    </article>
+
+    <div class="results-area">
+      @if (isLoading()) {
+        <bog-spinner>
+          <p>Consultando estado de cuenta...</p>
+        </bog-spinner>
+      }
+
+      @if (!isLoading() && hasSearched()) {
+        @if (currentAccount(); as account) {
+          <article
+            class="bog-card account-card account-card--{{
+              account.status | lowercase
+            }} animate-fade-in"
+          >
+            <div class="account-card__header">
+              <span class="bog-badge bog-badge--{{ account.status | lowercase }}"
+                >CUENTA {{ account.status }}</span
+              >
+              <h2 class="account-card__number">No. {{ account.accountNumber }}</h2>
+            </div>
+
+            <div class="account-card__details">
+              <div class="detail-row">
+                <span class="label">Titular:</span>
+                <span class="value">{{ selectedCustomer()?.fullName }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">Documento:</span>
+                <span class="value">{{ selectedCustomer()?.documentNumber }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">ID Interno:</span>
+                <span class="value">{{ account.id }}</span>
+              </div>
+            </div>
+          </article>
+        } @else {
+          <article class="bog-empty-state animate-fade-in">
+            <div class="bog-empty-state__icon">📂</div>
+            <h3 class="bog-empty-state__title">El cliente no tiene cuenta</h3>
+            <p class="bog-empty-state__desc">
+              El usuario seleccionado existe en el sistema pero no tiene ningún producto activo
+              asociado.
+            </p>
+
+            <bog-button variant="primary" [block]="true" (clicked)="navigateToCreateAccount()">
+              Registrar Cuenta Bancaria
+            </bog-button>
+          </article>
+        }
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,144 @@
+<div class="customer-register">
+  <header class="customer-register__header">
+    <h2 class="customer-register__title">Registro de Clientes</h2>
+    <p class="customer-register__subtitle">
+      Ingrese la información requerida para el alta del sistema.
+    </p>
+  </header>
+
+  <form (submit)="onSubmit($event)" class="customer-form">
+    <div class="customer-form__grid">
+      <div class="customer-form__group">
+        <label for="documentType" class="customer-form__label">Tipo de Documento</label>
+        <select
+          id="documentType"
+          [formField]="registerForm.documentType"
+          class="customer-form__input"
+        >
+          <option value="">Seleccione un tipo</option>
+          @for (doc of documentTypes(); track doc.id) {
+            <option [value]="doc.id">{{ doc.name }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="customer-form__group">
+        <label for="documentNumber" class="customer-form__label">Número de Documento</label>
+        <input
+          id="documentNumber"
+          type="text"
+          [formField]="registerForm.documentNumber"
+          class="customer-form__input"
+          placeholder="Ej: 10203040"
+        />
+      </div>
+
+      <div class="customer-form__group customer-form__group--full">
+        <label for="fullName" class="customer-form__label">Nombre Completo</label>
+        <input
+          id="fullName"
+          type="text"
+          [formField]="registerForm.fullName"
+          class="customer-form__input"
+          placeholder="Nombre completo"
+        />
+      </div>
+
+      <div class="customer-form__group customer-form__group--full">
+        <label for="email" class="customer-form__label">Email</label>
+        <input
+          id="email"
+          type="email"
+          [formField]="registerForm.email"
+          class="customer-form__input"
+          placeholder="correo@banco.com"
+        />
+      </div>
+    </div>
+
+    @if (
+      (registerForm.documentType().touched() && registerForm.documentType().invalid()) ||
+      (registerForm.documentNumber().touched() && registerForm.documentNumber().invalid()) ||
+      (registerForm.fullName().touched() && registerForm.fullName().invalid()) ||
+      (registerForm.email().touched() && registerForm.email().invalid())
+    ) {
+      <div class="customer-form__errors-section">
+        @if (registerForm.documentType().touched() && registerForm.documentType().invalid()) {
+          <div class="error-group">
+            <strong class="error-group__title">Tipo de Documento</strong>
+            <ul class="error-list">
+              @for (error of registerForm.documentType().errors(); track error) {
+                <li class="error-list__item">{{ error.message }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        @if (registerForm.documentNumber().touched() && registerForm.documentNumber().invalid()) {
+          <div class="error-group">
+            <strong class="error-group__title">Número de Documento</strong>
+            <ul class="error-list">
+              @for (error of registerForm.documentNumber().errors(); track error) {
+                <li class="error-list__item">{{ error.message }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        @if (registerForm.fullName().touched() && registerForm.fullName().invalid()) {
+          <div class="error-group">
+            <strong class="error-group__title">Nombre Completo</strong>
+            <ul class="error-list">
+              @for (error of registerForm.fullName().errors(); track error) {
+                <li class="error-list__item">{{ error.message }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        @if (registerForm.email().touched() && registerForm.email().invalid()) {
+          <div class="error-group">
+            <strong class="error-group__title">Correo Electrónico</strong>
+            <ul class="error-list">
+              @for (error of registerForm.email().errors(); track error) {
+                <li class="error-list__item">{{ error.message }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    }
+
+    <div class="customer-form__actions">
+      <bog-button variant="ghost" (clicked)="resetForm()" [disabled]="isLoading()">
+        Cancelar
+      </bog-button>
+
+      <div class="actions-group">
+        <bog-button
+          type="submit"
+          variant="accent"
+          [isLoading]="isLoading() && nextStep() === 'list'"
+          [disabled]="isLoading() && nextStep() !== 'list'"
+          (clicked)="setNextStep('list')"
+        >
+          Guardar
+        </bog-button>
+
+        <bog-button
+          type="submit"
+          variant="primary"
+          [isLoading]="isLoading() && nextStep() === 'createAccount'"
+          [disabled]="isLoading() && nextStep() !== 'createAccount'"
+          (clicked)="setNextStep('createAccount')"
+        >
+          Guardar y Abrir Cuenta
+        </bog-button>
+      </div>
+    </div>
+
+    @if (showSuccess()) {
+      <div class="customer-form__toast">¡Cliente registrado exitosamente!</div>
+    }
+  </form>
+</div>
