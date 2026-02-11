@@ -5,11 +5,12 @@ import { form, FormField, required } from '@angular/forms/signals';
 import { take, tap } from 'rxjs';
 import { AccountService } from '../../../shared/services/account/account.service';
 import { Account, AccountStatus } from '../../../shared/models/account';
+import { ButtonComponent } from '../../../shared/atoms/button/button.component';
 
 @Component({
   selector: 'app-account-register',
   standalone: true,
-  imports: [CommonModule, FormField, RouterModule],
+  imports: [CommonModule, FormField, RouterModule, ButtonComponent],
   templateUrl: './account-register.component.html',
   styleUrl: './account-register.component.scss',
 })

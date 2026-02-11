@@ -110,26 +110,30 @@
     }
 
     <div class="customer-form__actions">
-      <button type="button" class="btn btn--ghost" (click)="resetForm()">Cancelar</button>
+      <bog-button variant="ghost" (clicked)="resetForm()" [disabled]="isLoading()">
+        Cancelar
+      </bog-button>
 
       <div class="actions-group">
-        <button
+        <bog-button
           type="submit"
-          class="btn btn--secondary"
-          (click)="setNextStep('list')"
-          [disabled]="isLoading()"
+          variant="accent"
+          [isLoading]="isLoading() && nextStep() === 'list'"
+          [disabled]="isLoading() && nextStep() !== 'list'"
+          (clicked)="setNextStep('list')"
         >
-          {{ isLoading() ? 'Guardando...' : 'Guardar' }}
-        </button>
+          Guardar
+        </bog-button>
 
-        <button
+        <bog-button
           type="submit"
-          class="btn btn--primary"
-          (click)="setNextStep('createAccount')"
-          [disabled]="isLoading()"
+          variant="primary"
+          [isLoading]="isLoading() && nextStep() === 'createAccount'"
+          [disabled]="isLoading() && nextStep() !== 'createAccount'"
+          (clicked)="setNextStep('createAccount')"
         >
-          {{ isLoading() ? 'Procesando...' : 'Guardar y Abrir Cuenta' }}
-        </button>
+          Guardar y Abrir Cuenta
+        </bog-button>
       </div>
     </div>
 

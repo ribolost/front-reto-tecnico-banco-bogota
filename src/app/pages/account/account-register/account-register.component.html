@@ -36,18 +36,18 @@
     }
 
     <div class="account-form__actions">
-      <button
+      <bog-button
         type="button"
-        class="btn btn--ghost"
-        routerLink="/cuentas/registro"
-        [queryParams]="{ customerId: customerId() }"
+        variant="ghost"
+        routerLink="/cuentas"
+        [queryParams]="{ idCliente: customerId() }"
       >
         Cancelar
-      </button>
+      </bog-button>
 
-      <button type="submit" class="btn btn--primary" [disabled]="isLoading()">
-        {{ isLoading() ? 'Procesando...' : 'Crear Cuenta' }}
-      </button>
+      <bog-button type="submit" variant="primary" [isLoading]="isLoading()">
+        Crear Cuenta
+      </bog-button>
     </div>
 
     @if (showSuccess()) {

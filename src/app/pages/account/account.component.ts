@@ -15,11 +15,12 @@ import { Customer } from '../../shared/models/customers';
 import { AccountService } from '../../shared/services/account/account.service';
 import { SpinnerComponent } from '../../shared/atoms/spinner/spinner.component';
 import { first, tap } from 'rxjs';
+import { ButtonComponent } from '../../shared/atoms/button/button.component';
 
 @Component({
   selector: 'bog-account',
   standalone: true,
-  imports: [CommonModule, FormsModule, SpinnerComponent],
+  imports: [CommonModule, FormsModule, SpinnerComponent, ButtonComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

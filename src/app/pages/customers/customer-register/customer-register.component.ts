@@ -5,11 +5,12 @@ import { Customer, DocumentType, DocumentTypes } from '../../../shared/models/cu
 import { CustomersService } from '../../../shared/services/customers/customers.service';
 import { first, Subscription, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { ButtonComponent } from '../../../shared/atoms/button/button.component';
 
 @Component({
   selector: 'app-customer-register',
   standalone: true,
-  imports: [CommonModule, FormField],
+  imports: [CommonModule, FormField, ButtonComponent],
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.scss',
 })

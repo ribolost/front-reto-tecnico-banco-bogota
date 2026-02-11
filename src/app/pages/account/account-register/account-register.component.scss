@@ -98,36 +98,3 @@
     font-weight: 600;
   }
 }
-
-.btn {
-  height: var.$btn-height;
-  padding: 0 1.5rem;
-  border-radius: var.$border-radius-md;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var.$transition-speed;
-  border: none;
-  font-size: 1rem;
-
-  &--primary {
-    background-color: var.$bdb-blue-primary;
-    color: var.$bdb-white;
-    &:hover {
-      background-color: var.$bdb-blue-light;
-    }
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-  }
-
-  &--ghost {
-    background-color: transparent;
-    color: var.$bdb-text-muted;
-    border: 1px solid var.$bdb-gray-border;
-    &:hover {
-      background-color: var.$bdb-gray-bg;
-      color: var.$bdb-text-dark;
-    }
-  }
-}

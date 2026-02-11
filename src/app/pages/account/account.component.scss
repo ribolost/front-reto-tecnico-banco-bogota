@@ -230,34 +230,6 @@
   }
 }
 
-.bog-btn {
-  padding: 0 24px;
-  height: var.$btn-height;
-  border-radius: var.$border-radius-md;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &--primary {
-    background-color: var.$bdb-blue-primary;
-    color: var.$bdb-white;
-    box-shadow: var.$shadow-card;
-
-    &:hover {
-      background-color: color.adjust(var.$bdb-blue-primary, $lightness: -5%);
-    }
-  }
-
-  @media (min-width: var.$breakpoint-tablet) {
-    width: auto;
-  }
-}
-
 .bog-badge {
   padding: 4px 12px;
   border-radius: var.$border-radius-pill;

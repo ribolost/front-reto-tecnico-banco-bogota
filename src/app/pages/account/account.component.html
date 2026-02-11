@@ -94,9 +94,10 @@
               El usuario seleccionado existe en el sistema pero no tiene ningún producto activo
               asociado.
             </p>
-            <button class="bog-btn bog-btn--primary" (click)="navigateToCreateAccount()">
+
+            <bog-button variant="primary" [block]="true" (clicked)="navigateToCreateAccount()">
               Registrar Cuenta Bancaria
-            </button>
+            </bog-button>
           </article>
         }
       }
