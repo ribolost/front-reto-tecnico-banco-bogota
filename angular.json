@@ -11,7 +11,20 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "type": "component"
+        },
+        "@schematics/angular:service": {
+          "type": "service"
+        },
+        "@schematics/angular:pipe": {
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:class": {
+          "type": "class"
         }
       },
       "root": "",
@@ -25,7 +38,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": ["src"]
+              "includePaths": ["src", "src/styles/variables.scss"]
             },
             "assets": [
               {
@@ -34,8 +47,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "src/styles/variables.scss"
+              "src/styles.scss"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
