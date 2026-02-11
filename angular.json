@@ -38,7 +38,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": ["src", "src/styles/variables.scss"]
+              "includePaths": ["src", "src/styles/variables.scss", "src/styles/key-frames.scss"]
             },
             "assets": [
               {

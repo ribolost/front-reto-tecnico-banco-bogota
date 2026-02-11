@@ -1,0 +1,19 @@
+@use 'sass:color';
+@use 'styles/variables' as var;
+
+.button {
+  background-color: var.$bdb-yellow;
+  color: var.$bdb-blue-primary;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var.$border-radius-md;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var.$shadow-sm;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var.$bdb-yellow-dark;
+    transform: translateY(-2px);
+  }
+}

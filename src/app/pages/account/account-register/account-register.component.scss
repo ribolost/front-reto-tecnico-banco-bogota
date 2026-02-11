@@ -1,0 +1,133 @@
+@use 'styles/variables' as var;
+
+.account-register {
+  width: 100%;
+  max-width: var.$container-narrow;
+  margin: var.$spacing-lg auto;
+  padding: 0 var.$spacing-sm;
+
+  &__header {
+    margin-bottom: var.$spacing-lg;
+  }
+
+  &__title {
+    color: var.$bdb-blue-primary;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var.$spacing-xs;
+  }
+
+  &__subtitle {
+    color: var.$bdb-text-muted;
+    font-size: 1rem;
+  }
+}
+
+.account-form {
+  background: var.$bdb-white;
+  padding: var.$spacing-lg;
+  border-radius: var.$border-radius-lg;
+  box-shadow: var.$shadow-sm;
+
+  &__info {
+    background-color: var.$bdb-gray-bg;
+    padding: var.$spacing-sm;
+    border-radius: var.$border-radius-md;
+    margin-bottom: var.$spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .info-label {
+      font-size: 0.85rem;
+      color: var.$bdb-text-muted;
+    }
+    .info-value {
+      font-weight: 700;
+      color: var.$bdb-blue-primary;
+      font-family: monospace;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-xs;
+    margin-bottom: var.$spacing-lg;
+  }
+
+  &__label {
+    font-weight: 600;
+    color: var.$bdb-blue-primary;
+    font-size: 0.9rem;
+  }
+
+  &__input {
+    height: var.$input-height;
+    padding: 0 var.$spacing-sm;
+    border: 1px solid var.$bdb-gray-border;
+    border-radius: var.$border-radius-md;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 2px solid var.$bdb-blue-light;
+      border-color: transparent;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-sm;
+    margin-top: var.$spacing-lg;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+
+  &__toast {
+    margin-top: var.$spacing-sm;
+    padding: var.$spacing-sm;
+    background-color: var.$bdb-success-bg;
+    color: var.$bdb-success;
+    border: 1px solid var.$bdb-success;
+    border-radius: var.$border-radius-md;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+.btn {
+  height: var.$btn-height;
+  padding: 0 1.5rem;
+  border-radius: var.$border-radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var.$transition-speed;
+  border: none;
+  font-size: 1rem;
+
+  &--primary {
+    background-color: var.$bdb-blue-primary;
+    color: var.$bdb-white;
+    &:hover {
+      background-color: var.$bdb-blue-light;
+    }
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: var.$bdb-text-muted;
+    border: 1px solid var.$bdb-gray-border;
+    &:hover {
+      background-color: var.$bdb-gray-bg;
+      color: var.$bdb-text-dark;
+    }
+  }
+}

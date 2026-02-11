@@ -1,0 +1,33 @@
+@if (modalOptions()) {
+  <div class="modal">
+    <!-- Backdrop -->
+    <div class="modal__backdrop"></div>
+
+    <!-- Modal Content -->
+    <div class="modal__container" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+      <div class="modal__content">
+        <!-- Header -->
+        <div class="modal__header">
+          <h2 class="modal__title" id="modal-title">{{ modalOptions()!.title }}</h2>
+        </div>
+
+        <!-- Body -->
+        <div class="modal__body">
+          <p class="modal__message">{{ modalOptions()!.message }}</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal__footer">
+          <button
+            class="modal__button modal__button--loading"
+            type="button"
+            (click)="executeCommands()"
+            [attr.aria-label]="modalOptions()!.buttonLabel"
+          >
+            <span>{{ modalOptions()!.buttonLabel }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

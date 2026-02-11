@@ -1,0 +1,57 @@
+<div class="account-register">
+  <header class="account-register__header">
+    <h2 class="account-register__title">Apertura de Cuenta</h2>
+    <p class="account-register__subtitle">
+      Configuración del producto para el cliente seleccionado.
+    </p>
+  </header>
+
+  <form (submit)="onSubmit($event)" class="account-form">
+    <div class="account-form__info">
+      <span class="info-label">Asociando cuenta al Cliente ID:</span>
+      <span class="info-value">{{ customerId() }}</span>
+    </div>
+
+    <div class="account-form__grid">
+      <div class="account-form__group">
+        <label for="status" class="account-form__label">Estado Inicial de la Cuenta</label>
+        <select id="status" [formField]="registerForm.status" class="account-form__input">
+          @for (opt of statusOptions(); track opt.id) {
+            <option [value]="opt.id">{{ opt.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    @if (registerForm.status().touched() && registerForm.status().invalid()) {
+      <div class="account-form__errors-section">
+        <div class="error-group">
+          <ul class="error-list">
+            @for (error of registerForm.status().errors(); track error) {
+              <li class="error-list__item">{{ error.message }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+
+    <div class="account-form__actions">
+      <button
+        type="button"
+        class="btn btn--ghost"
+        routerLink="/cuentas/registro"
+        [queryParams]="{ customerId: customerId() }"
+      >
+        Cancelar
+      </button>
+
+      <button type="submit" class="btn btn--primary" [disabled]="isLoading()">
+        {{ isLoading() ? 'Procesando...' : 'Crear Cuenta' }}
+      </button>
+    </div>
+
+    @if (showSuccess()) {
+      <div class="account-form__toast">¡Cuenta creada exitosamente! Redirigiendo...</div>
+    }
+  </form>
+</div>

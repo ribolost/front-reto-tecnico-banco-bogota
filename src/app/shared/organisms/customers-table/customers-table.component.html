@@ -1,0 +1,46 @@
+<div class="bog-table-wrapper">
+  <table class="bog-table">
+    <thead class="bog-table__head">
+      <tr>
+        <th scope="col" class="bog-table__th">Tipo Doc.</th>
+        <th scope="col" class="bog-table__th">No. Documento</th>
+        <th scope="col" class="bog-table__th">Nombre Completo</th>
+        <th scope="col" class="bog-table__th">Email</th>
+      </tr>
+    </thead>
+
+    <tbody class="bog-table__body">
+      @for (customer of customers(); track customer.id) {
+        <tr class="bog-table__row">
+          <td class="bog-table__cell" data-label="Tipo Doc.">
+            <div class="bog-table__value">
+              <bog-document-type-badge
+                [documentType]="customer.documentType"
+              ></bog-document-type-badge>
+            </div>
+          </td>
+
+          <td class="bog-table__cell" data-label="No. Documento">
+            <span class="bog-table__value">{{ customer.documentNumber }}</span>
+          </td>
+
+          <td class="bog-table__cell bog-table__cell--highlight" data-label="Nombre">
+            <span class="bog-table__value">{{ customer.fullName }}</span>
+          </td>
+
+          <td class="bog-table__cell" data-label="Email">
+            <span class="bog-table__value">{{ customer.email }}</span>
+          </td>
+        </tr>
+      } @empty {
+        <tr class="bog-table__empty-row">
+          <td colspan="4">
+            <div class="bog-empty-state">
+              <p>No se encontraron clientes registrados.</p>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

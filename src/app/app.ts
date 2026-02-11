@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AdminLayoutComponent } from './shared/templates/admin-layout/admin-layout.component';
+import { ModalComponent } from './shared/organisms/modal/modal.component';
 
 @Component({
   selector: 'bog-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AdminLayoutComponent, ModalComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('front-reto-tecnico-banco-bogota');
+  protected readonly title = signal('Onboarding de Clientes');
 }
