@@ -1,0 +1,19 @@
+<div class="bog-form-field" [class.bog-form-field--invalid]="showError()">
+  <label [for]="inputId()" class="bog-form-field__label">
+    {{ label() }}
+  </label>
+
+  <div class="bog-form-field__control">
+    <ng-content></ng-content>
+  </div>
+
+  @if (showError()) {
+    <div class="bog-form-field__error-container">
+      <ul class="bog-form-field__list">
+        @for (err of errorMessages(); track $index) {
+          <li class="bog-form-field__item">{{ err }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>
