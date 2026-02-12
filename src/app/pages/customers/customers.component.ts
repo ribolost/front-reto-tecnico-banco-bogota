@@ -17,7 +17,6 @@ export default class CustomersComponent {
   customers = input.required<Customer[]>();
 
   createCustomer(): void {
-    console.log('Creando nuevo cliente');
     this.router.navigate(['/clientes/registro']);
   }
 }

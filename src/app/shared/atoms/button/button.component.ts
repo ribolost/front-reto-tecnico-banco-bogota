@@ -12,19 +12,15 @@ export type ButtonType = 'button' | 'submit' | 'reset';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  // Inputs con Signals
-  label = input<string>(); // Opcional: si no se usa ng-content
+  label = input<string>();
   type = input<ButtonType>('button');
   variant = input<ButtonVariant>('primary');
   disabled = input(false);
   isLoading = input(false);
-  block = input(false); // Para ocupar el 100% del ancho
-
-  // Outputs
+  block = input(false);
   clicked = output<void>();
 
   onClick(event: Event): void {
-    // Si está deshabilitado o cargando, prevenimos el clic
     if (this.disabled() || this.isLoading()) {
       event.preventDefault();
       event.stopPropagation();

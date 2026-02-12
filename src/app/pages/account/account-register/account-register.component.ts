@@ -6,11 +6,20 @@ import { take, tap } from 'rxjs';
 import { AccountService } from '../../../shared/services/account/account.service';
 import { Account, AccountStatus } from '../../../shared/models/account';
 import { ButtonComponent } from '../../../shared/atoms/button/button.component';
+import { FormFieldComponent } from '../../../shared/molecules/form-field/form-field.component';
+import { InfoBlockComponent } from '../../../shared/molecules/info-block/info-block.component';
 
 @Component({
-  selector: 'app-account-register',
+  selector: 'bog-account-register',
   standalone: true,
-  imports: [CommonModule, FormField, RouterModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    FormField,
+    RouterModule,
+    ButtonComponent,
+    FormFieldComponent,
+    InfoBlockComponent,
+  ],
   templateUrl: './account-register.component.html',
   styleUrl: './account-register.component.scss',
 })
@@ -60,7 +69,7 @@ export default class AccountRegisterComponent implements OnInit {
         tap(() => {
           this.showSuccess.set(true);
           this.isLoading.set(false);
-          this.router.navigate(['/cuentas'], { queryParams: { idClient: this.customerId() } });
+          this.router.navigate(['/cuentas'], { queryParams: { idCliente: this.customerId() } });
         }),
         take(1),
       )

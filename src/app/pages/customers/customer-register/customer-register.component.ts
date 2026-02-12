@@ -6,11 +6,12 @@ import { CustomersService } from '../../../shared/services/customers/customers.s
 import { first, Subscription, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../../shared/atoms/button/button.component';
+import { FormFieldComponent } from '../../../shared/molecules/form-field/form-field.component';
 
 @Component({
-  selector: 'app-customer-register',
+  selector: 'bog-customer-register',
   standalone: true,
-  imports: [CommonModule, FormField, ButtonComponent],
+  imports: [CommonModule, FormField, ButtonComponent, FormFieldComponent],
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.scss',
 })
@@ -71,18 +72,19 @@ export default class CustomerRegisterComponent {
       .subscribe();
   }
 
-  private handleCustomerCreationResponse(customer: Customer) {
+  private handleCustomerCreationResponse(customer: Customer): void {
     this.showSuccess.set(true);
     this.resetForm();
     this.isLoading.set(false);
 
     if (this.nextStep() === 'createAccount') {
-      this.router.navigate(['/cuentas/register'], {
+      this.router.navigate(['/cuentas/registro'], {
         queryParams: { idCliente: customer.id },
       });
-    } else {
-      this.router.navigate(['/clientes']);
+      return;
     }
+
+    this.router.navigate(['/clientes']);
   }
 
   resetForm(): void {

@@ -43,16 +43,17 @@ export default class AccountComponent {
 
   filteredCustomers = computed(() => {
     const query = this.searchQuery().toLowerCase();
-    return this.customers().filter((c) => {
-      const searchStr = `${c.documentType} ${c.documentNumber} ${c.fullName}`.toLowerCase();
+    return this.customers().filter((customer) => {
+      const searchStr =
+        `${customer.documentType} ${customer.documentNumber} ${customer.fullName}`.toLowerCase();
       return searchStr.includes(query);
     });
   });
 
   formattedSelectedCustomer = computed(() => {
-    const c = this.selectedCustomer();
-    if (!c) return '';
-    return `${c.documentType} - ${c.documentNumber} - ${c.fullName}`;
+    const customer = this.selectedCustomer();
+    if (!customer) return '';
+    return `${customer.documentType} - ${customer.documentNumber} - ${customer.fullName}`;
   });
 
   constructor() {
@@ -60,11 +61,13 @@ export default class AccountComponent {
       const paramId = this.customerId();
       const allCustomers = this.customers();
 
-      if (paramId && allCustomers.length > 0) {
-        const found = allCustomers.find((customer) => customer.id === Number(paramId));
-        if (found) {
-          this.selectCustomer(found);
-        }
+      if (!paramId || allCustomers.length === 0) {
+        return;
+      }
+
+      const found = allCustomers.find((customer) => customer.id === Number(paramId));
+      if (found) {
+        this.selectCustomer(found);
       }
     });
   }

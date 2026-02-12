@@ -29,50 +29,15 @@
   border-radius: var.$border-radius-lg;
   box-shadow: var.$shadow-sm;
 
-  &__info {
-    background-color: var.$bdb-gray-bg;
-    padding: var.$spacing-sm;
-    border-radius: var.$border-radius-md;
-    margin-bottom: var.$spacing-lg;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-
-    .info-label {
-      font-size: 0.85rem;
-      color: var.$bdb-text-muted;
-    }
-    .info-value {
-      font-weight: 700;
-      color: var.$bdb-blue-primary;
-      font-family: monospace;
-    }
-  }
-
-  &__group {
-    display: flex;
-    flex-direction: column;
-    gap: var.$spacing-xs;
+  &__section {
     margin-bottom: var.$spacing-lg;
   }
 
-  &__label {
-    font-weight: 600;
-    color: var.$bdb-blue-primary;
-    font-size: 0.9rem;
-  }
-
-  &__input {
-    height: var.$input-height;
-    padding: 0 var.$spacing-sm;
-    border: 1px solid var.$bdb-gray-border;
-    border-radius: var.$border-radius-md;
-    font-size: 1rem;
-
-    &:focus {
-      outline: 2px solid var.$bdb-blue-light;
-      border-color: transparent;
-    }
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var.$spacing-md;
+    margin-bottom: var.$spacing-lg;
   }
 
   &__actions {

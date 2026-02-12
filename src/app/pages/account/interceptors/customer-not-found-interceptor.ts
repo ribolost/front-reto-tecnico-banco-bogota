@@ -15,7 +15,6 @@ export const customerNotFoundInterceptor: HttpInterceptorFn = (req, next) => {
       if (error.status !== 404) {
         return throwError(() => error);
       }
-      console.log('404 error');
 
       const modalOptions: ModalOptions = {
         ...customerNotFoundError,

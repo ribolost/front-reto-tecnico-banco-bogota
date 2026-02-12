@@ -4,6 +4,10 @@ import { genericErrorInterceptor } from './core/interceptors/generic-error-inter
 
 export const routes: Routes = [
   {
+    path: 'clientes',
+    loadChildren: () => import('./pages/customers/customers.routes').then((m) => m.routes),
+  },
+  {
     path: 'cuentas',
     loadChildren: () =>
       import('./pages/account/account.routes').then((m) => {
@@ -11,10 +15,5 @@ export const routes: Routes = [
         return m.routes;
       }),
   },
-  {
-    path: 'clientes',
-    loadChildren: () => import('./pages/customers/customers.routes').then((m) => m.routes),
-  },
-
   { path: '**', redirectTo: 'clientes', pathMatch: 'full' },
 ];

@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use 'styles/variables' as var;
 
 .customer-register {
@@ -37,45 +36,16 @@
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
 
     @media (min-width: var.$breakpoint-tablet) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  &__group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-
-    &--full {
-      @media (min-width: var.$breakpoint-tablet) {
-        grid-column: span 2;
-      }
-    }
-  }
-
-  &__label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var.$bdb-blue-primary;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-
-  &__input {
-    padding: 1rem;
-    border: 2px solid var.$bdb-gray-border;
-    border-radius: var.$border-radius-md;
-    font-size: 1rem;
-    color: var.$bdb-text-dark;
-    transition: all 0.25s ease;
-
-    &:focus {
-      outline: none;
-      border-color: var.$bdb-blue-light;
-      background-color: rgba(var.$bdb-blue-light, 0.02);
+  &__col-full {
+    @media (min-width: var.$breakpoint-tablet) {
+      grid-column: span 2;
     }
   }
 
@@ -103,28 +73,6 @@
     }
   }
 
-  &__success {
-    margin-top: var.$spacing-lg;
-    padding: 1.25rem;
-    background-color: var.$bdb-success-bg;
-    color: var.$bdb-success-dark;
-    border-radius: var.$border-radius-md;
-    text-align: center;
-    font-weight: 600;
-    border: 1px solid var.$bdb-success;
-  }
-
-  &__errors-section {
-    margin-top: 2.5rem;
-    padding: 1.5rem;
-    background-color: var.$bdb-error-bg;
-    border: 1px solid var.$bdb-error;
-    border-radius: var.$border-radius-lg;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
   &__toast {
     margin-top: 1.5rem;
     padding: 1rem 1.5rem;
@@ -146,41 +94,6 @@
       font-size: 1.25rem;
       color: var.$bdb-success;
       font-weight: bold;
-    }
-  }
-}
-
-.error-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  &__title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var.$bdb-error;
-  }
-}
-
-.error-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-
-  &__item {
-    font-size: 0.85rem;
-    color: var.$bdb-error-dark;
-    padding-left: 1.25rem;
-    position: relative;
-
-    &::before {
-      content: '●';
-      position: absolute;
-      left: 0;
-      color: var.$bdb-error;
     }
   }
 }
