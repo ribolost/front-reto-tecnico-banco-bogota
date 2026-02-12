@@ -72,7 +72,7 @@ export default class CustomerRegisterComponent {
       .subscribe();
   }
 
-  private handleCustomerCreationResponse(customer: Customer) {
+  private handleCustomerCreationResponse(customer: Customer): void {
     this.showSuccess.set(true);
     this.resetForm();
     this.isLoading.set(false);
@@ -81,9 +81,10 @@ export default class CustomerRegisterComponent {
       this.router.navigate(['/cuentas/registro'], {
         queryParams: { idCliente: customer.id },
       });
-    } else {
-      this.router.navigate(['/clientes']);
+      return;
     }
+
+    this.router.navigate(['/clientes']);
   }
 
   resetForm(): void {

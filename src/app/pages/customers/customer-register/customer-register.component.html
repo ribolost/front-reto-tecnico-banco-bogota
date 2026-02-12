@@ -8,11 +8,11 @@
 
   <form (submit)="onSubmit($event)" class="customer-form">
     <div class="customer-form__grid">
-
       <bog-form-field
         label="Tipo de Documento"
         inputId="documentType"
-        [controlState]="registerForm.documentType()">
+        [controlState]="registerForm.documentType()"
+      >
         <select id="documentType" [formField]="registerForm.documentType">
           <option value="">Seleccione un tipo</option>
           @for (doc of documentTypes(); track doc.id) {
@@ -24,7 +24,8 @@
       <bog-form-field
         label="Número de Documento"
         inputId="documentNumber"
-        [controlState]="registerForm.documentNumber()">
+        [controlState]="registerForm.documentNumber()"
+      >
         <input
           id="documentNumber"
           type="text"
@@ -37,7 +38,8 @@
         <bog-form-field
           label="Nombre Completo"
           inputId="fullName"
-          [controlState]="registerForm.fullName()">
+          [controlState]="registerForm.fullName()"
+        >
           <input
             id="fullName"
             type="text"
@@ -48,10 +50,7 @@
       </div>
 
       <div class="customer-form__col-full">
-        <bog-form-field
-          label="Email"
-          inputId="email"
-          [controlState]="registerForm.email()">
+        <bog-form-field label="Email" inputId="email" [controlState]="registerForm.email()">
           <input
             id="email"
             type="email"
@@ -73,7 +72,8 @@
           variant="accent"
           [isLoading]="isLoading() && nextStep() === 'list'"
           [disabled]="isLoading() && nextStep() !== 'list'"
-          (clicked)="setNextStep('list')">
+          (clicked)="setNextStep('list')"
+        >
           Guardar
         </bog-button>
 
@@ -82,7 +82,8 @@
           variant="primary"
           [isLoading]="isLoading() && nextStep() === 'createAccount'"
           [disabled]="isLoading() && nextStep() !== 'createAccount'"
-          (clicked)="setNextStep('createAccount')">
+          (clicked)="setNextStep('createAccount')"
+        >
           Guardar y Abrir Cuenta
         </bog-button>
       </div>

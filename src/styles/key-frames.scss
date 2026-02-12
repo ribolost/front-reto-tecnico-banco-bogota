@@ -1,7 +1,3 @@
-/**
- * Animación de desvanecimiento (entrada)
- * Uso: backdrop, overlays, modales
- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -11,10 +7,6 @@
   }
 }
 
-/**
- * Animación de desvanecimiento (salida)
- * Uso: backdrop, overlays, modales
- */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -24,10 +16,6 @@
   }
 }
 
-/**
- * Animación de deslizamiento hacia arriba
- * Uso: modal, cards, dropdowns
- */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -39,10 +27,6 @@
   }
 }
 
-/**
- * Animación de deslizamiento hacia abajo
- * Uso: notificaciones, errores, alertas
- */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -54,10 +38,6 @@
   }
 }
 
-/**
- * Animación de pulso/latido
- * Uso: botones en estado de carga, estados activos
- */
 @keyframes pulse {
   0%,
   100% {
@@ -68,10 +48,6 @@
   }
 }
 
-/**
- * Animación de escalado suave
- * Uso: interacciones con hover, efectos de zoom
- */
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -83,10 +59,6 @@
   }
 }
 
-/**
- * Animación de rotación infinita
- * Uso: spinners, loaders
- */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -96,10 +68,6 @@
   }
 }
 
-/**
- * Animación de movimiento horizontal suave
- * Uso: skeleton loading, efecto shimmer
- */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -109,10 +77,6 @@
   }
 }
 
-/**
- * Animación de rebote suave
- * Uso: elementos interactivos, confirmaciones
- */
 @keyframes bounce {
   0%,
   100% {
