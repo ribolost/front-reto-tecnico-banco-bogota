@@ -6,11 +6,13 @@ import { CustomersService } from '../../../shared/services/customers/customers.s
 import { first, Subscription, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../../shared/atoms/button/button.component';
+import { InfoBlockComponent } from '../../../shared/molecules/info-block/info-block.component';
+import { FormFieldComponent } from '../../../shared/molecules/form-field/form-field.component';
 
 @Component({
   selector: 'app-customer-register',
   standalone: true,
-  imports: [CommonModule, FormField, ButtonComponent],
+  imports: [CommonModule, FormField, ButtonComponent, FormFieldComponent],
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.scss',
 })
@@ -77,7 +79,7 @@ export default class CustomerRegisterComponent {
     this.isLoading.set(false);
 
     if (this.nextStep() === 'createAccount') {
-      this.router.navigate(['/cuentas/register'], {
+      this.router.navigate(['/cuentas/registro'], {
         queryParams: { idCliente: customer.id },
       });
     } else {
